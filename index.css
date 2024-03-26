@@ -14,10 +14,10 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for headings */
 }
 
-.playlist {
+.playlists {
     margin: 20px;
     padding: 20px; /* Increased padding */
-    background-color: #6A5ACD; /* Purple background for playlists */
+    background-color: #d535e7; /* Purple background for playlists */
     display: inline-block;
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for playlists */
@@ -36,4 +36,13 @@ h1 {
 .song-title:hover {
     text-decoration: none; /* Remove underline on hover */
     color: #00FF00; /* Green color on hover */
+}
+
+li  {
+    list-style: none;
+    margin: 10px;
+    
+}
+h4{
+    font-size: 30px;
 }

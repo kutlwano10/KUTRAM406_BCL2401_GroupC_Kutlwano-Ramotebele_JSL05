@@ -11,6 +11,8 @@ const songs = [
     { title: "Come and Get Your Love", artist: "Redbone", genre: "Rock" },
     { title: "I'm Not in Love", artist: "10cc", genre: "Pop" },
     { title: "Fooled Around and Fell in Love", artist: "Elvin Bishop", genre: "Rock" },
+    {title: "Nothing Matters", artist: "Metallica", genre: "Heavy Metal"},
+    
     // Feel free to add even more songs
 ];
 
@@ -19,6 +21,9 @@ const songs = [
 const guardians = {
     "Star-Lord": "Rock",
     "Gamora": "Pop",
+    "Drax": "Rock",
+    "Rocket": "Rock",
+    "Groot": "Heavy Metal"
     // Add preferences for Drax, Rocket, and Groot
 };
 
@@ -26,9 +31,58 @@ const guardians = {
 function generatePlaylist(guardians, songs) {
     // Use the map() function to create playlists for each Guardian
     // Your code here
+
+    //We are going create a new array using map() from guardians. and we will put the first keys in guardian & second keys in genre) its more like we created new variables for them.
+    //This code will compare if 
+    return Object.entries(guardians).map(([guardian, genre]) => {
+        const playlist = songs.filter(song => song.genre === genre);
+        return {guardian, playlist};
+    })
+}
+
+function displayPlaylists(playlists) {
+    //This is the playlist ID 
+    const playlistsDiv = document.getElementById("playlists");
+
+    //We are going to loop through each playlist(guardian & playlist, which is the var we created to contain genres)
+    playlists.forEach(({guardian, playlist}) => {
+        const playlistEl = document.createElement("div");
+        playlistEl.classList.add("playlists")
+            //We want to display the Guardians Name
+        playlistEl.innerHTML = `<h4>${guardian}'s Playlist</h4>`;
+
+        //Styling The Block
+        // playlistEl.style.background = "blue";
+        // playlistEl.style.display = "inline-block";
+        // playlistEl.style.margin = "20px";
+        // playlistEl.style.borderRadius = "10px";
+        //end
+
+
+            //Created a ul to display the list of song and artist
+        const songLIst = document.createElement("div");
+
+        playlist.forEach( song => {
+            const songItem = document.createElement("li");
+
+            songItem.innerHTML = `<span class = "song-title">${song.title}</span> by ${song.artist}`;
+
+            songLIst.appendChild(songItem);
+
+        });
+        playlistEl.appendChild(songLIst);
+        playlistsDiv.appendChild(playlistEl);
+        
+    });
+
+
+
+
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
-generatePlaylist(guardians, songs);
+const playlists = generatePlaylist(guardians, songs);
+
+displayPlaylists(playlists);
 
 
