@@ -39,7 +39,6 @@ function generatePlaylist(guardians, songs) {
     //This code will compare if 
     return Object.entries(guardians).map(([guardian, genre]) => {
         const playlist = songs.filter(song => song.genre === genre);
-
         return { guardian, playlist };
     })
 }
@@ -54,14 +53,6 @@ function displayPlaylists(playlists) {
         playlistEl.classList.add("playlists")
         //We want to display the Guardians Name
         playlistEl.innerHTML = `<h4>${guardian}'s Playlist</h4>`;
-
-        //Styling The Block
-        // playlistEl.style.background = "blue";
-        // playlistEl.style.display = "inline-block";
-        // playlistEl.style.margin = "20px";
-        // playlistEl.style.borderRadius = "10px";
-        //end
-
 
         //Created a ul to display the list of song and artist
         const songLIst = document.createElement("div");
