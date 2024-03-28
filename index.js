@@ -11,8 +11,11 @@ const songs = [
     { title: "Come and Get Your Love", artist: "Redbone", genre: "Rock" },
     { title: "I'm Not in Love", artist: "10cc", genre: "Pop" },
     { title: "Fooled Around and Fell in Love", artist: "Elvin Bishop", genre: "Rock" },
-    {title: "Nothing Matters", artist: "Metallica", genre: "Heavy Metal"},
-    
+    { title: "Nothing Matters", artist: "Metallica", genre: "Heavy Metal" },
+    { title: "Fear for My Pain", artist: "BlackSabbath", genre: "Heavy Metal" },
+    { title: "Kiss", artist: "Iron Maiden", genre: "Heavy Metal" },
+
+
     // Feel free to add even more songs
 ];
 
@@ -36,7 +39,8 @@ function generatePlaylist(guardians, songs) {
     //This code will compare if 
     return Object.entries(guardians).map(([guardian, genre]) => {
         const playlist = songs.filter(song => song.genre === genre);
-        return {guardian, playlist};
+
+        return { guardian, playlist };
     })
 }
 
@@ -45,10 +49,10 @@ function displayPlaylists(playlists) {
     const playlistsDiv = document.getElementById("playlists");
 
     //We are going to loop through each playlist(guardian & playlist, which is the var we created to contain genres)
-    playlists.forEach(({guardian, playlist}) => {
+    playlists.forEach(({ guardian, playlist }) => {
         const playlistEl = document.createElement("div");
         playlistEl.classList.add("playlists")
-            //We want to display the Guardians Name
+        //We want to display the Guardians Name
         playlistEl.innerHTML = `<h4>${guardian}'s Playlist</h4>`;
 
         //Styling The Block
@@ -59,20 +63,20 @@ function displayPlaylists(playlists) {
         //end
 
 
-            //Created a ul to display the list of song and artist
+        //Created a ul to display the list of song and artist
         const songLIst = document.createElement("div");
 
-        playlist.forEach( song => {
+        playlist.forEach(song => {
             const songItem = document.createElement("li");
 
-            songItem.innerHTML = `<span class = "song-title">${song.title}</span> by ${song.artist}`;
+            songItem.innerHTML = `<span class ="song-title">${song.title}</span> by ${song.artist}`;
 
             songLIst.appendChild(songItem);
 
         });
         playlistEl.appendChild(songLIst);
         playlistsDiv.appendChild(playlistEl);
-        
+
     });
 
 
@@ -84,5 +88,3 @@ function displayPlaylists(playlists) {
 const playlists = generatePlaylist(guardians, songs);
 
 displayPlaylists(playlists);
-
-
